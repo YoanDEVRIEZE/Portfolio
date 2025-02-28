@@ -36,25 +36,12 @@
 					<img style="width: 450px; opacity: 0.5; mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%); -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);" src="{{ asset('styles/img/profil/Profil.webp') }}" alt="Yoan DE VRIEZE">
 				</div>
 				<div class="intro--options">
-					<a href="#0">
-						<h3>Mon projet :</h3>
-						<p>Développeur web depuis 14 ans, je transforme ma passion en expertise. Mon objectif ? Faire du développement web mon métier à plein temps et accompagner des projets ambitieux. Chaque ligne de code est une opportunité de créer des solutions performantes et évolutives.</p>
+                    {% for presentation_item in presentation %}
+                    <a href="#0">
+                        <h3>{{ presentation_item.titre }}</h3>
+                        <p>{{ presentation_item.contenu|raw }}</p>
 					</a>
-					<a href="#0">
-						<h3>Spécialités :</h3>
-						<p>
-							<b>
-								<u>Expert Symfony & PHP :</u>
-							</b>
-							Conception d’architectures robustes et scalables<br><br><b>
-								<u>Code maintenable & sécurisé</u>
-							</b>
-							: Rigueur, bonnes pratiques et qualité avant tout</p>
-					</a>
-					<a href="#0">
-						<h3>Mes valeurs :</h3>
-						<p>Ce qui me distingue ? Un code propre, performant et pérenne. J’applique les meilleures pratiques du développement pour garantir des applications fiables et évolutives. Lisibilité, modularité et optimisation sont au centre de ma démarche.</p>
-					</a>
+                    {% endfor %}
 				</div>
 			</div>
 		</li>
