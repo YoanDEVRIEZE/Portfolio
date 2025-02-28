@@ -1872,26 +1872,6 @@ body {
     transition: width 2s ease-in-out;
 }
 
-.progress-html {
-    background-color: #E34F26;
-}
-
-.progress-css {
-    background-color: #1572B6;
-}
-
-.progress-js {
-    background-color: #8f7f09;
-}
-
-.progress-php {
-    background-color: #777BB4;
-}
-
-.progress-symfony {
-    background-color: #000000;
-}
-
 .modal-content {
     display: flex;
     align-items: center;

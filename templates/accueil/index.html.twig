@@ -110,36 +110,14 @@
 			<div class="hire">
 				<h2>Mes compétences 🔧</h2>
 				<div class="work-request--options">
-					<div class="progress-container">
-						<span class="progress-label">HTML</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/html-5.png') }}">
-						<div class="progress-bar">
-							<div class="progress progress-html" data-value="100"></div>
-						</div>
-					</div>
-					<div class="progress-container">
-						<span class="progress-label">CSS</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/css-3.png') }}">
-						<div class="progress-bar">
-							<div class="progress progress-css" data-value="70"></div>
-						</div>
-					</div>
-					<div class="progress-container">
-						<span class="progress-label">JavaScript</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/js.png') }}">
-						<div class="progress-bar">
-							<div class="progress progress-js" data-value="45"></div>
-						</div>
-					</div>
-					<div class="progress-container">
-						<span class="progress-label">PHP</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/php2.png') }}">
-						<div class="progress-bar">
-							<div class="progress progress-php" data-value="90"></div>
-						</div>
-					</div>
-					<div class="progress-container">
-						<span class="progress-label">Symfony</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/symfony.png') }}">
-						<div class="progress-bar">
-							<div class="progress progress-symfony" data-value="90"></div>
-						</div>
-					</div>
+                    {% for skill_item in skill %}
+                        <div class="progress-container">
+                            <span class="progress-label">{{ skill_item.titre }}</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/' ~ skill_item.logo) }}" alt="{{ skill_item.titre }}">
+                            <div class="progress-bar">
+                                <div class="progress" style="background-color:{{ skill_item.couleur }}" data-value="{{ skill_item.niveau }}"></div>
+                            </div>
+                        </div>
+                    {% endfor %}
 				</div>
 			</div>
 		</li>
