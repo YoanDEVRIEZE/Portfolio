@@ -1,18 +1,219 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<nav class="l-side-nav">
+		<ul class="side-nav">
+			<li class="is-active">
+				<span>Accueil</span>
+			</li>
+			<li>
+				<span>Mes projets et réalisations</span>
+			</li>
+			<li>
+				<span>Mon parcours professionnel</span>
+			</li>
+			<li>
+				<span>Mes compétences</span>
+			</li>
+			<li>
+				<span>Me contacter</span>
+			</li>
+		</ul>
+	</nav>
+	<ul class="l-main-content main-content">
+		<li class="l-section section section--is-active">
+			<div class="intro">
+				<div class="intro--banner">
+					<h1>Développeur Web<br>Intégrateur<br>Junior</h1>
+					<button class="cta">Me contacter
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+							<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+								<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+							</g>
+						</svg>
+						<span class="btn-background"></span>
+					</button>
+					<img style="width: 450px; opacity: 0.5; mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%); -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);" src="{{ asset('styles/img/profil/Profil.webp') }}" alt="Yoan DE VRIEZE">
+				</div>
+				<div class="intro--options">
+					<a href="#0">
+						<h3>Mon projet :</h3>
+						<p>Développeur web depuis 14 ans, je transforme ma passion en expertise. Mon objectif ? Faire du développement web mon métier à plein temps et accompagner des projets ambitieux. Chaque ligne de code est une opportunité de créer des solutions performantes et évolutives.</p>
+					</a>
+					<a href="#0">
+						<h3>Spécialités :</h3>
+						<p>
+							<b>
+								<u>Expert Symfony & PHP :</u>
+							</b>
+							Conception d’architectures robustes et scalables<br><br><b>
+								<u>Code maintenable & sécurisé</u>
+							</b>
+							: Rigueur, bonnes pratiques et qualité avant tout</p>
+					</a>
+					<a href="#0">
+						<h3>Mes valeurs :</h3>
+						<p>Ce qui me distingue ? Un code propre, performant et pérenne. J’applique les meilleures pratiques du développement pour garantir des applications fiables et évolutives. Lisibilité, modularité et optimisation sont au centre de ma démarche.</p>
+					</a>
+				</div>
+			</div>
+		</li>
+		<li class="l-section section">
+			<div class="work">
+				<h2>Mes projet et réalisations</h2>
+				<div class="work--lockup">
+					<ul class="slider">
+						<li class="slider--item slider--item-left">
+							<a href="#0">
+								<div class="slider--item-image">
+									<img src="{{ asset('styles/img/icones_projets/work-victory.jpg') }}" alt="Victory">
+								</div>
+								<p class="slider--item-title">Victory</p>
+								<p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+							</a>
+						</li>
+						<li class="slider--item slider--item-center">
+							<a href="#0">
+								<div class="slider--item-image">
+									<img src="{{ asset('styles/img/icones_projets/magasin.jpg') }}" alt="Microsix.fr">
+								</div>
+								<p class="slider--item-title">Microsix</p>
+								<p class="slider--item-description">Boutique de réparation informatique PC / WINDOWS / MAC</p>
+							</a>
+						</li>
+						<li class="slider--item slider--item-right">
+							<a href="#0">
+								<div class="slider--item-image">
+									<img src="{{ asset('styles/img/icones_projets/work-alex-nowak.jpg') }}" alt="Alex Nowak">
+								</div>
+								<p class="slider--item-title">Alex Nowak</p>
+								<p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+							</a>
+						</li>
+					</ul>
+					<div class="slider--prev">
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+							<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+								<path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
+							</g>
+						</svg>
+					</div>
+					<div class="slider--next">
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+							<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+								<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+							</g>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="l-section section">
+			<div class="about">
+				<div class="about--banner">
+					<h2>Mon<br>Parcours<br>Professionnel</h2>
+					<a href="#0">Voir tout mon parcours
+						<span>
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+								<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+									<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+								</g>
+							</svg>
+						</span>
+					</a>
+				</div>
+				<div class="about--options">
+					<a href="#0">
+						<h3>Homiris</h3>
+					</a>
+					<a href="#0">
+						<h3>La MAD</h3>
+					</a>
+					<a href="#0">
+						<h3>Odéolis</h3>
+					</a>
+				</div>
+			</div>
+		</li>
+		<li class="l-section section">
+			<div class="hire">
+				<h2>Mes compétences 🔧</h2>
+				<div class="work-request--options">
+					<div class="progress-container">
+						<span class="progress-label">HTML</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/html-5.png') }}">
+						<div class="progress-bar">
+							<div class="progress progress-html" data-value="100"></div>
+						</div>
+					</div>
+					<div class="progress-container">
+						<span class="progress-label">CSS</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/css-3.png') }}">
+						<div class="progress-bar">
+							<div class="progress progress-css" data-value="70"></div>
+						</div>
+					</div>
+					<div class="progress-container">
+						<span class="progress-label">JavaScript</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/js.png') }}">
+						<div class="progress-bar">
+							<div class="progress progress-js" data-value="45"></div>
+						</div>
+					</div>
+					<div class="progress-container">
+						<span class="progress-label">PHP</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/php2.png') }}">
+						<div class="progress-bar">
+							<div class="progress progress-php" data-value="90"></div>
+						</div>
+					</div>
+					<div class="progress-container">
+						<span class="progress-label">Symfony</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/symfony.png') }}">
+						<div class="progress-bar">
+							<div class="progress progress-symfony" data-value="90"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="l-section section">
+			<div class="contact">
+				<div class="contact--lockup">
+					<div class="modal">
+						<div
+							class="modal-content">
+							<!-- Bloc gauche avec informations et options -->
+							<div class="modal-left">
+								<div class="modal--information">
+									<img class="profile-img" src="{{ asset('styles/img/profil/Profil.webp') }}" alt="Global">
+									<p>Yoan DE VRIEZE</p>
+									<a href="mailto:ouremail@gmail.com">devrieze.yoan@gmail.com</a>
+									<a href="tel:+148126287560">+33 7 70 30 57 80</a>
+								</div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+								<ul class="modal--options">
+									<li>
+										<a class="linkedin" href="https://www.linkedin.com/in/yoan-de-vrieze" target="_blank">
+											<img src="{{ asset('styles/img/icons8-linkedin-48.png') }}">Linkedin
+										</a>
+									</li>
+									<li>
+										<a class="github" href="https://github.com/YoanDEVRIEZE" target="_blank">
+											<img src="{{ asset('styles/img/icons8-github-48.png') }}">GitHub
+										</a>
+									</li>
+								</ul>
+							</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/wamp64/www/Symfony/Portfolio/src/Controller/AccueilController.php</code></li>
-        <li>Your template at <code>C:/wamp64/www/Symfony/Portfolio/templates/accueil/index.html.twig</code></li>
-    </ul>
-</div>
+							<!-- Bloc formulaire aligné à droite -->
+							<div class="modal--formulaire">
+								<p>Par formulaire :</p>
+								<form>
+									<input class="formulaireinput" type="text" placeholder="Sujet">
+									<textarea class="formulairearea"></textarea>
+									<button class="formulairebutton" type="submit">Envoyer</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
 {% endblock %}
