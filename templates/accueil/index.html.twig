@@ -50,33 +50,17 @@
 				<h2>Mes projet et réalisations</h2>
 				<div class="work--lockup">
 					<ul class="slider">
-						<li class="slider--item slider--item-left">
-							<a href="#0">
-								<div class="slider--item-image">
-									<img src="{{ asset('styles/img/icones_projets/work-victory.jpg') }}" alt="Victory">
-								</div>
-								<p class="slider--item-title">Victory</p>
-								<p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-							</a>
-						</li>
-						<li class="slider--item slider--item-center">
-							<a href="#0">
-								<div class="slider--item-image">
-									<img src="{{ asset('styles/img/icones_projets/magasin.jpg') }}" alt="Microsix.fr">
-								</div>
-								<p class="slider--item-title">Microsix</p>
-								<p class="slider--item-description">Boutique de réparation informatique PC / WINDOWS / MAC</p>
-							</a>
-						</li>
-						<li class="slider--item slider--item-right">
-							<a href="#0">
-								<div class="slider--item-image">
-									<img src="{{ asset('styles/img/icones_projets/work-alex-nowak.jpg') }}" alt="Alex Nowak">
-								</div>
-								<p class="slider--item-title">Alex Nowak</p>
-								<p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-							</a>
-						</li>
+                        {% for projet_item in projet %}
+                            <li class="slider--item {% if loop.first %}slider--item-left{% elseif loop.index == 2 %}slider--item-center{% else %}slider--item-right{% endif %}">
+                                <a href="#0">
+                                    <div class="slider--item-image">
+                                        <img src="{{ asset('styles/img/icones_projets/' ~ projet_item.photocouverture) }}" alt="{{ projet_item.alt }}">
+                                    </div>
+                                    <p class="slider--item-title">{{ projet_item.titre }}</p>
+                                    <p class="slider--item-description">{{ projet_item.description }}</p>
+                                </a>
+                            </li>
+                        {% endfor %}
 					</ul>
 					<div class="slider--prev">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">

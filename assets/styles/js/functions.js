@@ -4,7 +4,6 @@ $(document).ready(function () {
   var canScroll = true,
       scrollController = null;
 
-  // Correction du listener de scroll
   document.addEventListener("wheel", function (e) {
     if (!$('.outer-nav').hasClass('is-vis')) {
       e.preventDefault();
@@ -48,7 +47,6 @@ $(document).ready(function () {
     updateContent(curPos, nextPos, lastItem);
   });
 
-  // Swipe support
   var targetElement = document.getElementById('viewport'),
       mc = new Hammer(targetElement);
   mc.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
@@ -119,23 +117,33 @@ $(document).ready(function () {
   function workSlider() {
     $('.slider--prev, .slider--next').click(function () {
       var $this = $(this),
-          $slider = $('.slider'),
-          $items = $slider.children(),
-          totalWorks = $items.length;
-
-      $('.slider').animate({ opacity: 0 }, 400);
-
-      setTimeout(function () {
-        if ($this.hasClass('slider--next')) {
-          $items.first().appendTo($slider);
-        } else {
-          $items.last().prependTo($slider);
-        }
-      }, 400);
-
-      $('.slider').animate({ opacity: 1 }, 400);
+      $slider = $('.slider'),
+      $items = $slider.children();
+    
+      if ($this.hasClass('slider--next')) {
+        $items.first().appendTo($slider);
+      } else {
+        $items.last().prependTo($slider);
+      }
+    
+      updateSliderClasses();
     });
   }
+  
+  function updateSliderClasses() {
+      var $items = $('.slider').children();
+      
+      $items.removeClass('slider--item-left slider--item-center slider--item-right');
+  
+      $items.eq(0).addClass('slider--item-left');
+      $items.eq(1).addClass('slider--item-center');
+      $items.eq(2).addClass('slider--item-right');
+  }
+  
+  $(document).ready(function () {
+      updateSliderClasses();
+      workSlider();
+  });
 
   function transitionLabels() {
     $('.work-request--information input').focusout(function () {
