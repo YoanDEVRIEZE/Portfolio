@@ -57,6 +57,7 @@ final class AccueilController extends AbstractController
             'projet' => $projet,
             'skill' => $skill,
             'form' => $form,
+            'section' => 0, 
         ]);
     }
 }
