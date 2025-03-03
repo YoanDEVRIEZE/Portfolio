@@ -30,10 +30,16 @@ final class AccueilController extends AbstractController
             $entityManager->flush(); 
             
             $this->addFlash('success', 'Votre message a bien ete envoye !');
-            
-            return $this->redirectToRoute('portfolio_accueil', ['section' => 4]);
-        } 
 
+            return $this->render('accueil/index.html.twig', [
+                'presentation' => $presentation,
+                'projet' => $projet,
+                'skill' => $skill,
+                'form' => $form->createView(),
+                'section' => 4, 
+            ]);
+        } 
+        
         if ($form->isSubmitted() && !$form->isValid()) {
             $this->addFlash('error', 'Votre message contient des erreurs');
 
@@ -44,7 +50,7 @@ final class AccueilController extends AbstractController
                 'form' => $form->createView(),
                 'section' => 4, 
             ]);
-        }      
+        }  
 
         return $this->render('accueil/index.html.twig', [
             'presentation' => $presentation,

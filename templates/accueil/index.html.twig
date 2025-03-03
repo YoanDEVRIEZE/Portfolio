@@ -177,24 +177,21 @@
 									{% if form.nom.vars.errors|length > 0 %}
 										<span class="is-invalid">{{ form_errors(form.nom) }}</span>
 									{% endif %}
-
 									{{ form_widget(form.prenom) }}
 									{% if form.prenom.vars.errors|length > 0 %}
 										<span class="is-invalid">{{ form_errors(form.prenom) }}</span>
 									{% endif %}
-
 									{{ form_widget(form.mail) }}
 									{% if form.mail.vars.errors|length > 0 %}
 										<span class="is-invalid ">{{ form_errors(form.mail) }}</span>
 									{% endif %}
-
 									{{ form_widget(form.contenu) }}
 									{% if form.contenu.vars.errors|length > 0 %}
 										<span class="is-invalid">{{ form_errors(form.contenu) }}</span>
 									{% endif %}	
-
 									{{ form_widget(form.button) }}								
 								{{ form_end(form) }}
+								<div id="section-data" data-section="{{ section|json_encode|raw }}"></div>
 							</div>
 						</div>
 					</div>

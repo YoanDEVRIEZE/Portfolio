@@ -2,7 +2,7 @@ $(document).ready(function () {
   var canScroll = true,
       scrollController = null;
 
-  var sectionToActivate = new URLSearchParams(window.location.search).get('section');
+  var sectionToActivate = document.getElementById('section-data').getAttribute('data-section');
 
   if (sectionToActivate !== null) {
     sectionToActivate = parseInt(sectionToActivate);
@@ -13,8 +13,8 @@ $(document).ready(function () {
         lastItem = $('.side-nav').children().length - 1,
         nextPos = lastItem;
 
-      updateNavs(lastItem);
-      updateContent(curPos, nextPos, lastItem);
+    updateNavs(lastItem);
+    updateContent(curPos, nextPos, lastItem);
     } else {
       updateNavs(sectionToActivate);
     }
