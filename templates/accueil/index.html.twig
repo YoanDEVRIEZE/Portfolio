@@ -37,9 +37,8 @@
 				</div>
 				<div class="intro--options">
                     {% for presentation_item in presentation %}
-                    <a href="#0">
-                        <h3>{{ presentation_item.titre }}</h3>
-                        <p>{{ presentation_item.contenu|raw }}</p>
+                    <a href="#0">                        
+                        <p><b><u>{{ presentation_item.titre }}</u></b> {{ presentation_item.contenu|raw }}</p>
 					</a>
                     {% endfor %}
 				</div>
@@ -92,6 +91,16 @@
 							</svg>
 						</span>
 					</a>
+					<br>
+					<a href="documents/Yoan DE VRIEZE.pdf" download type="application/pdf">Télécharger mon CV
+						<span>
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+								<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+									<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+								</g>
+							</svg>
+						</span>
+					</a>
 				</div>
 				<div class="about--options">
 					<a href="#0">
@@ -125,17 +134,16 @@
 			<div class="contact">
 				<div class="contact--lockup">
 					<div class="modal">
-						<div
-							class="modal-content">
-							<!-- Bloc gauche avec informations et options -->
+						<div class="modal-content">
 							<div class="modal-left">
 								<div class="modal--information">
-									<img class="profile-img" src="{{ asset('styles/img/profil/Profil.webp') }}" alt="Global">
-									<p>Yoan DE VRIEZE</p>
-									<a href="mailto:ouremail@gmail.com">devrieze.yoan@gmail.com</a>
-									<a href="tel:+148126287560">+33 7 70 30 57 80</a>
+									<div>
+										<b>E-mail : </b><a href="mailto:ouremail@gmail.com">devrieze.yoan@gmail.com</a>
+									</div>
+									<div>
+										<b>Téléphone : </b><a href="tel:+148126287560">+33 7 70 30 57 80</a>
+									</div>
 								</div>
-
 								<ul class="modal--options">
 									<li>
 										<a class="linkedin" href="https://www.linkedin.com/in/yoan-de-vrieze" target="_blank">
@@ -147,13 +155,11 @@
 											<img src="{{ asset('styles/img/icons8-github-48.png') }}">GitHub
 										</a>
 									</li>
-								</ul>
-							</div>
-
-							<!-- Bloc formulaire aligné à droite -->
-							<div class="modal--formulaire">
-								<p>Par formulaire :</p>
+								</ul>								
 								<form>
+									<input class="formulaireinput" type="text" placeholder="Nom">
+									<input class="formulaireinput" type="text" placeholder="Prénom">
+									<input class="formulaireinput" type="text" placeholder="Entreprise">
 									<input class="formulaireinput" type="text" placeholder="Sujet">
 									<textarea class="formulairearea"></textarea>
 									<button class="formulairebutton" type="submit">Envoyer</button>

@@ -1,5 +1,3 @@
-// @codekit-prepend "/vendor/hammer-2.0.8.js";
-
 $(document).ready(function () {
   var canScroll = true,
       scrollController = null;
@@ -48,7 +46,7 @@ $(document).ready(function () {
   });
 
   var targetElement = document.getElementById('viewport'),
-      mc = new Hammer(targetElement);
+  mc = new Hammer(targetElement);
   mc.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
   mc.on('swipeup swipedown', function (e) {
     updateHelper(e.type === "swipeup" ? 1 : -1);
@@ -71,8 +69,11 @@ $(document).ready(function () {
     else if (param > 0) nextPos = 0;
     else if (param < 0) nextPos = lastItem;
 
-    updateNavs(nextPos);
-    updateContent(curPos, nextPos, lastItem);
+    setTimeout(() => {
+      updateNavs(nextPos);
+      updateContent(curPos, nextPos, lastItem);
+      isAnimating = false;
+    }, 100);
   }
 
   function updateNavs(nextPos) {
@@ -100,20 +101,6 @@ $(document).ready(function () {
     } 
   }
 
-  function outerNav() {
-    $('.header--nav-toggle').click(function () {
-      $('.perspective').addClass('perspective--modalview');
-      setTimeout(() => $('.perspective').addClass('effect-rotate-left--animate'), 25);
-      $('.outer-nav, .outer-nav li, .outer-nav--return').addClass('is-vis');
-    });
-
-    $('.outer-nav--return, .outer-nav li').click(function () {
-      $('.perspective').removeClass('effect-rotate-left--animate');
-      setTimeout(() => $('.perspective').removeClass('perspective--modalview'), 400);
-      $('.outer-nav, .outer-nav li, .outer-nav--return').removeClass('is-vis');
-    });
-  }
-
   function workSlider() {
     $('.slider--prev, .slider--next').click(function () {
       var $this = $(this),
@@ -127,6 +114,20 @@ $(document).ready(function () {
       }
     
       updateSliderClasses();
+    });
+  }
+
+  function outerNav() {
+    $('.header--nav-toggle').click(function () {
+      $('.perspective').addClass('perspective--modalview');
+      setTimeout(() => $('.perspective').addClass('effect-rotate-left--animate'), 25);
+      $('.outer-nav, .outer-nav li, .outer-nav--return').addClass('is-vis');
+    });
+
+    $('.outer-nav--return, .outer-nav li').click(function () {
+      $('.perspective').removeClass('effect-rotate-left--animate');
+      setTimeout(() => $('.perspective').removeClass('perspective--modalview'), 400);
+      $('.outer-nav, .outer-nav li, .outer-nav--return').removeClass('is-vis');
     });
   }
   
