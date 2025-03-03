@@ -2,6 +2,24 @@ $(document).ready(function () {
   var canScroll = true,
       scrollController = null;
 
+  var sectionToActivate = new URLSearchParams(window.location.search).get('section');
+
+  if (sectionToActivate !== null) {
+    sectionToActivate = parseInt(sectionToActivate);
+
+    if (sectionToActivate === 4) {
+      var curActive = $('.side-nav').find('.is-active'),
+        curPos = $('.side-nav').children().index(curActive),
+        lastItem = $('.side-nav').children().length - 1,
+        nextPos = lastItem;
+
+      updateNavs(lastItem);
+      updateContent(curPos, nextPos, lastItem);
+    } else {
+      updateNavs(sectionToActivate);
+    }
+  }
+
   document.addEventListener("wheel", function (e) {
     if (!$('.outer-nav').hasClass('is-vis')) {
       e.preventDefault();
@@ -83,24 +101,23 @@ $(document).ready(function () {
 
   function updateContent(curPos, nextPos, lastItem) {
     $('.main-content').children().removeClass('section--is-active')
-      .eq(nextPos).addClass('section--is-active');
+        .eq(nextPos).addClass('section--is-active');
     $('.main-content .section').children().removeClass('section--next section--prev');
 
     if ((curPos === lastItem && nextPos === 0) || (curPos === 0 && nextPos === lastItem)) {
-      $('.main-content .section').children().removeClass('section--next section--prev');
+        $('.main-content .section').children().removeClass('section--next section--prev');
     } else if (curPos < nextPos) {
-      $('.main-content').children().eq(curPos).children().addClass('section--next');
+        $('.main-content').children().eq(curPos).children().addClass('section--next');
     } else {
-      $('.main-content').children().eq(curPos).children().addClass('section--prev');
+        $('.main-content').children().eq(curPos).children().addClass('section--prev');
     }
 
     $('.header--cta').toggleClass('is-active', nextPos !== 0 && nextPos !== lastItem);
 
-    if(nextPos === 3) {
-      startProgressAnimationCustom();        
-    } 
+    if (nextPos === 3) {
+        startProgressAnimationCustom();
+    }
   }
-
   function workSlider() {
     $('.slider--prev, .slider--next').click(function () {
       var $this = $(this),

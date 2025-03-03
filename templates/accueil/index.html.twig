@@ -137,6 +137,22 @@
 						<div class="modal-content">
 							<div class="modal-left">
 								<div class="modal--information">
+									{% for message in app.flashes('success') %}
+										<div class="alert alert-success">
+											<div class="alert-content">
+												<img src="{{ asset('styles/img/icones_contact/icons8-approbation-48.png') }}" class="alert-icon">
+												<span>{{ message }}</span>
+											</div>
+										</div>
+									{% endfor %}
+									{% for message in app.flashes('error') %}
+										<div class="alert alert-error">
+											<div class="alert-content">
+												<img src="{{ asset('styles/img/icones_contact/icons8-annuler-48.png') }}" class="alert-icon">
+												<span>{{ message }}</span>
+											</div>
+										</div>
+									{% endfor %}
 									<div>
 										<b>E-mail : </b><a href="mailto:ouremail@gmail.com">devrieze.yoan@gmail.com</a>
 									</div>
@@ -156,14 +172,29 @@
 										</a>
 									</li>
 								</ul>								
-								<form>
-									<input class="formulaireinput" type="text" placeholder="Nom">
-									<input class="formulaireinput" type="text" placeholder="Prénom">
-									<input class="formulaireinput" type="text" placeholder="Entreprise">
-									<input class="formulaireinput" type="text" placeholder="Sujet">
-									<textarea class="formulairearea"></textarea>
-									<button class="formulairebutton" type="submit">Envoyer</button>
-								</form>
+								{{ form_start(form) }}
+									{{ form_widget(form.nom) }}
+									{% if form.nom.vars.errors|length > 0 %}
+										<span class="is-invalid">{{ form_errors(form.nom) }}</span>
+									{% endif %}
+
+									{{ form_widget(form.prenom) }}
+									{% if form.prenom.vars.errors|length > 0 %}
+										<span class="is-invalid">{{ form_errors(form.prenom) }}</span>
+									{% endif %}
+
+									{{ form_widget(form.mail) }}
+									{% if form.mail.vars.errors|length > 0 %}
+										<span class="is-invalid ">{{ form_errors(form.mail) }}</span>
+									{% endif %}
+
+									{{ form_widget(form.contenu) }}
+									{% if form.contenu.vars.errors|length > 0 %}
+										<span class="is-invalid">{{ form_errors(form.contenu) }}</span>
+									{% endif %}	
+
+									{{ form_widget(form.button) }}								
+								{{ form_end(form) }}
 							</div>
 						</div>
 					</div>
