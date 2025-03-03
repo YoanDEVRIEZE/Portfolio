@@ -135,9 +135,9 @@ $(document).ready(function () {
       
       $items.removeClass('slider--item-left slider--item-center slider--item-right');
   
-      $items.eq(0).addClass('slider--item-left');
+      $items.eq(2).addClass('slider--item-left');
       $items.eq(1).addClass('slider--item-center');
-      $items.eq(2).addClass('slider--item-right');
+      $items.eq(0).addClass('slider--item-right');
   }
   
   $(document).ready(function () {
