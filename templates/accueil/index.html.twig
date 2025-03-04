@@ -103,15 +103,11 @@
 					</a>
 				</div>
 				<div class="about--options">
-					<a href="#0">
-						<h3>Homiris</h3>
-					</a>
-					<a href="#0">
-						<h3>La MAD</h3>
-					</a>
-					<a href="#0">
-						<h3>Odéolis</h3>
-					</a>
+					{% for item_parcours in parcours %}
+						<a href="#" style="background-image: url('{{ asset('styles/img/icones_entreprises/' ~ item_parcours.photocouverture) }}');">
+							<h3>{{ item_parcours.nom }}</h3>
+						</a>
+					{% endfor %}					
 				</div>
 			</div>
 		</li>

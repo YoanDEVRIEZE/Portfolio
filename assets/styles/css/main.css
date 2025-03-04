@@ -1199,18 +1199,6 @@ body {
     background-repeat: no-repeat
 }
 
-.about--options>a:nth-child(1) {
-    background-image: url("../img/icones_entreprises/homiris.png")
-}
-
-.about--options>a:nth-child(2) {
-    background-image: url("../img/icones_entreprises/lamad.jpg")
-}
-
-.about--options>a:nth-child(3) {
-    background-image: url("../img/icones_entreprises/odéolis.jpg")
-}
-
 .about--options>a:hover h3 {
     bottom: -50px
 }

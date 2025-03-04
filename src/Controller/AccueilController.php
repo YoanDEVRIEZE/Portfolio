@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactFormType;
+use App\Repository\ParcoursRepository;
 use App\Repository\PresentationRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\SkillRepository;
@@ -15,10 +16,11 @@ use Symfony\Component\Routing\Attribute\Route;
 final class AccueilController extends AbstractController
 {
     #[Route('/', name: 'portfolio_accueil')]
-    public function index(Request $request, EntityManagerInterface $entityManager, PresentationRepository $presentation, ProjetRepository $projet, SkillRepository $skill, ContactFormType $form): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, PresentationRepository $presentation, ProjetRepository $projet, ParcoursRepository $parcours, SkillRepository $skill, ContactFormType $form): Response
     {
         $presentation = $presentation->findAll();
         $projet = $projet->findAll();
+        $parcours = $parcours->findBy([],['id' => 'DESC'], 3);
         $skill = $skill->findAll();
 
         $form = $this->createForm(ContactFormType::class);
@@ -40,6 +42,7 @@ final class AccueilController extends AbstractController
             return $this->render('accueil/index.html.twig', [
                 'presentation' => $presentation,
                 'projet' => $projet,
+                'parcours' => $parcours,
                 'skill' => $skill,
                 'form' => $form->createView(),
                 'section' => 4, 
@@ -49,6 +52,7 @@ final class AccueilController extends AbstractController
         return $this->render('accueil/index.html.twig', [
             'presentation' => $presentation,
             'projet' => $projet,
+            'parcours' => $parcours,
             'skill' => $skill,
             'form' => $form,
             'section' => 0, 
