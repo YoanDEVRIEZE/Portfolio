@@ -29,20 +29,14 @@ final class AccueilController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush(); 
             
-            $this->addFlash('success', 'Votre message a bien ete envoye !');
-
-            return $this->render('accueil/index.html.twig', [
-                'presentation' => $presentation,
-                'projet' => $projet,
-                'skill' => $skill,
-                'form' => $form->createView(),
-                'section' => 4, 
-            ]);
+            $this->addFlash('success', 'Votre message a bien ete envoye !');            
         } 
         
         if ($form->isSubmitted() && !$form->isValid()) {
-            $this->addFlash('error', 'Votre message contient des erreurs');
+            $this->addFlash('error', 'Votre message contient des erreurs');            
+        }  
 
+        if ($form->isSubmitted()) {
             return $this->render('accueil/index.html.twig', [
                 'presentation' => $presentation,
                 'projet' => $projet,
@@ -50,7 +44,7 @@ final class AccueilController extends AbstractController
                 'form' => $form->createView(),
                 'section' => 4, 
             ]);
-        }  
+        }
 
         return $this->render('accueil/index.html.twig', [
             'presentation' => $presentation,

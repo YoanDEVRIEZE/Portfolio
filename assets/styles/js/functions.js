@@ -210,9 +210,3 @@ function startProgressAnimationCustom() {
 
   progressBars.forEach(bar => observer.observe(bar));
 }
-
-document.querySelectorAll('.side-nav li, .outer-nav li').forEach(item => {
-  item.addEventListener("click", () => {
-    startProgressAnimationCustom();
-  });
-});
