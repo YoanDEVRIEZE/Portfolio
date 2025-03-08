@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>
+			{% block title %}
+				Yoan DE VRIEZE - Portfolio
+			{% endblock %}
+		</title>
+        <meta name="description" content="Développeur PHP spécialisé en Symfony, je conçois des applications web performantes et optimisées. Passionné par le développement back-end, j'allie expertise technique et bonnes pratiques pour créer des solutions sur mesure.">
+        <meta name="keywords" content="Portfolio, Yoan, DE VRIEZE, Yoan DE VRIEZE, PHP, Symfony, Framework, Développeur, Développeur PHP, Doctrine, MySQL, Visual code studio">
+        <meta name="author" content="Yoan DE VRIEZE">
+		<link rel="icon" href="{{ asset('styles/img/profil/Profil.webp') }}">
+		<link rel="stylesheet" href="{{ asset('styles/css/main.css') }}">
+
+		{% block stylesheets %}
+        {% endblock %}
+
+		{% block javascripts %}
+        {% endblock %}
+	</head>
+	<body>
+		<div class="perspective effect-rotate-left">
+			<div class="container">
+				<div class="outer-nav--return"></div>
+					<div id="viewport" class="l-viewport">
+						<div class="l-wrapper">
+							<header class="header">
+								<a class="header--logo">
+									<img class="profil-img" src="{{ asset('styles/img/profil/Profil.webp') }}" alt="Global">
+									<p>Yoan DE VRIEZE</p>
+								</a>
+							</header>
+							{% block body %}
+							{% endblock %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="{{ asset('styles/js/functions.js') }}"></script>
+		<script src="{{ asset('styles/js/projet.js') }}"></script>
+		<script src="{{ asset('styles/js/progressbar.js') }}"></script>
+		<script src="{{ asset('styles/js/popup.js') }}"></script>
+		<script src="{{ asset('styles/js/functions-min.js') }}"></script>
+	</body>
+</html>
