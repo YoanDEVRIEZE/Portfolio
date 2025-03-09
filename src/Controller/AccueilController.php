@@ -16,13 +16,8 @@ use Symfony\Component\Routing\Attribute\Route;
 final class AccueilController extends AbstractController
 {
     #[Route('/', name: 'portfolio_accueil')]
-    public function index(Request $request, EntityManagerInterface $entityManager, PresentationRepository $presentation, ProjetRepository $projet, ParcoursRepository $parcours, SkillRepository $skill, ContactFormType $form): Response
-    {
-        $presentation = $presentation->findAll();
-        $projet = $projet->findAll();
-        $parcours = $parcours->findBy([],['id' => 'DESC'], 3);
-        $skill = $skill->findAll();
-
+    public function index(Request $request, EntityManagerInterface $entityManager, ContactFormType $form): Response
+    {        
         $form = $this->createForm(ContactFormType::class);
         $form->handleRequest($request);
 
@@ -37,11 +32,6 @@ final class AccueilController extends AbstractController
                 $this->addFlash('success', 'Message envoyé !'); 
                 
                 return $this->redirectToRoute('portfolio_accueil', [
-                    'presentation' => $presentation,
-                    'projet' => $projet,
-                    'parcours' => $parcours,
-                    'skill' => $skill,
-                    'form' => $form,
                     'section' => 4,
                 ]);
             } else {
@@ -54,10 +44,6 @@ final class AccueilController extends AbstractController
         }  
 
         return $this->render('accueil/index.html.twig', [
-            'presentation' => $presentation,
-            'projet' => $projet,
-            'parcours' => $parcours,
-            'skill' => $skill,
             'form' => $form,
             'section' => ($form->isSubmitted()) ? 4 : 0, 
         ]);
