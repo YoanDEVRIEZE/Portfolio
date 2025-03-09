@@ -3,10 +3,6 @@
 namespace App\Controller;
 
 use App\Form\ContactFormType;
-use App\Repository\ParcoursRepository;
-use App\Repository\PresentationRepository;
-use App\Repository\ProjetRepository;
-use App\Repository\SkillRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
