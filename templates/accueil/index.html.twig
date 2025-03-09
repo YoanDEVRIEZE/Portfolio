@@ -24,8 +24,12 @@
 		<li class="l-section section section--is-active">
 			<div class="intro">
 				<div class="intro--banner">
-					<h1>Développeur Web<br>Intégrateur<br>Junior</h1>
-					<button class="cta">Me contacter
+					<h1>
+						Développeur Web<br>
+						Intégrateur<br>
+						Junior
+					</h1>
+					<button class="meContacter">Me contacter
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
 							<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
 								<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
@@ -33,14 +37,19 @@
 						</svg>
 						<span class="btn-background"></span>
 					</button>
-					<img class="profil-img-accueil" src="{{ asset('styles/img/profil/Profil.webp') }}" alt="Yoan DE VRIEZE">
+					<img class="profil-img-accueil" src="{{ asset('styles/img/profil/Profil.webp') }}" title="Yoan DE VRIEZE" alt="Yoan DE VRIEZE">
 				</div>
 				<div class="intro--options">
-                    {% for presentation_item in presentation %}
-                    <a href="#0">                        
-                        <p><b><u>{{ presentation_item.titre }}</u></b> {{ presentation_item.contenu|raw }}</p>
-					</a>
-                    {% endfor %}
+					{% for presentation_item in presentation %}
+						<a>
+							<p>
+								<b>
+									<u>{{ presentation_item.titre }}</u>
+								</b>
+								{{ presentation_item.contenu|raw }}
+							</p>
+						</a>
+					{% endfor %}
 				</div>
 			</div>
 		</li>
@@ -49,17 +58,17 @@
 				<h2>Mes projet et réalisations</h2>
 				<div class="work--lockup">
 					<ul class="slider">
-                        {% for projet_item in projet %}
-                            <li class="slider--item {% if loop.first %}slider--item-left{% elseif loop.index == 2 %}slider--item-center{% else %}slider--item-right{% endif %}">
-                                <a href="#popup-{{ loop.index }}" class="open-popup">
-                                    <div class="slider--item-image">
-                                        <img src="{{ asset('styles/img/icones_projets/' ~ projet_item.photocouverture) }}" alt="{{ projet_item.alt }}">
-                                    </div>
-                                    <p class="slider--item-title">{{ projet_item.titre }}</p>
-                                    <p class="slider--item-description">{{ projet_item.description }}</p>
-                                </a>
-                            </li>
-                        {% endfor %}
+						{% for projet_item in projet %}
+							<li class="slider--item {% if loop.first %}slider--item-left{% elseif loop.index == 2 %}slider--item-center{% else %}slider--item-right{% endif %}">
+								<a href="#popup-{{ loop.index }}" class="open-popup" title="{{ projet_item.titre }}">
+									<div class="slider--item-image">
+										<img src="{{ asset('styles/img/icones_projets/' ~ projet_item.photocouverture) }}" tilte="{{ projet_item.alt }}" alt="{{ projet_item.alt }}">
+									</div>
+									<p class="slider--item-title">{{ projet_item.titre }}</p>
+									<p class="slider--item-description">{{ projet_item.description }}</p>
+								</a>
+							</li>
+						{% endfor %}
 					</ul>
 					<div class="slider--prev">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
@@ -82,7 +91,7 @@
 			<div class="about">
 				<div class="about--banner">
 					<h2>Mon<br>Parcours<br>Professionnel</h2>
-					<a href="#0">Voir tout mon parcours
+					<a href="#0" title="Voir tout mon parcours professionnel">Voir tout mon parcours
 						<span>
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
 								<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
@@ -92,7 +101,7 @@
 						</span>
 					</a>
 					<br>
-					<a href="documents/Yoan DE VRIEZE.pdf" download type="application/pdf">Télécharger mon CV
+					<a href="documents/Yoan DE VRIEZE.pdf" download type="application/pdf" title="Télécharger le CV de Yoan DE VRIEZE">Télécharger mon CV
 						<span>
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
 								<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
@@ -104,10 +113,10 @@
 				</div>
 				<div class="about--options">
 					{% for item_parcours in parcours %}
-						<a href="#" style="background-image: url('{{ asset('styles/img/icones_entreprises/' ~ item_parcours.photocouverture) }}');">
+						<a href="#popupparcours-{{ loop.index }}" class="open-popup" style="background-image: url('{{ asset('styles/img/icones_entreprises/' ~ item_parcours.photocouverture) }}');" title="{{ item_parcours.nom }}">
 							<h3>{{ item_parcours.nom }}</h3>
 						</a>
-					{% endfor %}					
+					{% endfor %}
 				</div>
 			</div>
 		</li>
@@ -115,14 +124,15 @@
 			<div class="hire">
 				<h2>Mes compétences</h2>
 				<div class="work-request--options">
-                    {% for skill_item in skill %}
-                        <div class="progress-container">
-                            <span class="progress-label">{{ skill_item.titre }}</span><img style="width: 40px" src="{{ asset('styles/img/icones_competences/' ~ skill_item.logo) }}" alt="{{ skill_item.titre }}">
-                            <div class="progress-bar">
-                                <div class="progress" style="background-color:{{ skill_item.couleur }}" data-value="{{ skill_item.niveau }}"></div>
-                            </div>
-                        </div>
-                    {% endfor %}
+					{% for skill_item in skill %}
+						<div class="progress-container">
+							<span class="progress-label">{{ skill_item.titre }}</span>
+							<img style="width: 40px" src="{{ asset('styles/img/icones_competences/' ~ skill_item.logo) }}" title ="{{ skill_item.titre }}" alt="{{ skill_item.titre }}">
+							<div class="progress-bar">
+								<div class="progress" style="background-color:{{ skill_item.couleur }}" data-value="{{ skill_item.niveau }}"></div>
+							</div>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
 		</li>
@@ -136,7 +146,7 @@
 									{% for message in app.flashes('success') %}
 										<div class="alert alert-success">
 											<div class="alert-content">
-												<img src="{{ asset('styles/img/icones_contact/icons8-approbation-48.png') }}" class="alert-icon">
+												<img src="{{ asset('styles/img/icones_contact/icons8-approbation-48.webp') }}" class="alert-icon" alt="Validation du formulaire">
 												<span>{{ message }}</span>
 											</div>
 										</div>
@@ -144,65 +154,50 @@
 									{% for message in app.flashes('error') %}
 										<div class="alert alert-error">
 											<div class="alert-content">
-												<img src="{{ asset('styles/img/icones_contact/icons8-annuler-48.png') }}" class="alert-icon">
+												<img src="{{ asset('styles/img/icones_contact/icons8-annuler-48.webp') }}" class="alert-icon" alt="Erreur du formulaire">
 												<span>{{ message }}</span>
 											</div>
 										</div>
 									{% endfor %}
 									<div>
-										<b>E-mail : </b><a href="mailto:ouremail@gmail.com">devrieze.yoan@gmail.com</a>
+										<a href="mailto:devrieze.yoan@gmail.com" title="devrieze.yoan@gmail.com">devrieze.yoan@gmail.com</a>
 									</div>
 									<div>
-										<b>Téléphone : </b><a href="tel:+148126287560">+33 7 70 30 57 80</a>
+										<a href="tel:+33770305780" title="0770305780">+33 7 70 30 57 80</a>
 									</div>
 								</div>
 								<ul class="modal--options">
 									<li>
-										<a class="linkedin" href="https://www.linkedin.com/in/yoan-de-vrieze" target="_blank">
-											<img src="{{ asset('styles/img/icons8-linkedin-48.png') }}">Linkedin
+										<a class="linkedin" href="https://www.linkedin.com/in/yoan-de-vrieze" target="_blank" title="Linkedin">
+											<img src="{{ asset('styles/img/icones_contact/icons8-linkedin-48.webp') }}">Linkedin
 										</a>
 									</li>
 									<li>
-										<a class="github" href="https://github.com/YoanDEVRIEZE" target="_blank">
-											<img src="{{ asset('styles/img/icons8-github-48.png') }}">GitHub
+										<a class="github" href="https://github.com/YoanDEVRIEZE" target="_blank" title="GitHub">
+											<img src="{{ asset('styles/img/icones_contact/icons8-github-48.webp') }}">GitHub
 										</a>
 									</li>
-								</ul>								
-								{{ form_start(form) }}
-									{{ form_widget(form.nom) }}
-									{% if form.nom.vars.errors|length > 0 %}
-										<span class="is-invalid">{{ form_errors(form.nom) }}</span>
-									{% endif %}
-									{{ form_widget(form.prenom) }}
-									{% if form.prenom.vars.errors|length > 0 %}
-										<span class="is-invalid">{{ form_errors(form.prenom) }}</span>
-									{% endif %}
-									{{ form_widget(form.mail) }}
-									{% if form.mail.vars.errors|length > 0 %}
-										<span class="is-invalid ">{{ form_errors(form.mail) }}</span>
-									{% endif %}
-									{{ form_widget(form.contenu) }}
-									{% if form.contenu.vars.errors|length > 0 %}
-										<span class="is-invalid">{{ form_errors(form.contenu) }}</span>
-									{% endif %}	
-									{{ form_widget(form.button) }}								
-								{{ form_end(form) }}
-								<div id="section-data" data-section="{{ section|json_encode|raw }}"></div>
+									<li>
+										<a class="open-popup formulaire" href="#popupcontact-1" title="Par formulaire">
+											<img src="{{ asset('styles/img/icones_contact/icons8-courrier-48.webp') }}">Par formulaire
+										</a>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</li>
-	</ul>	
+	</ul>
 	{% for projet_item in projet %}
 		<div id="popup-{{ loop.index }}" class="popup">
 			<div class="popup-content">
 				<span class="close">&times;</span>
-				<img src="{{ asset('styles/img/projets/' ~ projet_item.photo) }}" alt="Image de projet">
+				<img src="{{ asset('styles/img/projets/' ~ projet_item.photo) }}" title="{{ projet_item.titre }}" alt="Image du projet : {{ projet_item.titre }}">
 				<hr>
 				<div class="popup-header">
-					<h2>{{ projet_item.titre }}</h2>	
+					<h2>{{ projet_item.titre }}</h2>
 					<div class="popup-logos">
 						{% for skills in projet_item.skill %}
 							<img src="{{ asset('styles/img/icones_competences/' ~ skills.logo) }}" title="{{ skills.titre }}" alt="Logo de la compétence : {{ skills.titre }}" class="logo">
@@ -211,11 +206,73 @@
 				</div>
 				<p>{{ projet_item.description }}</p>
 				<hr>
-				<p><a href="{{ projet_item.lien }}">{{ projet_item.lien }}</a></p>
+				<p>
+					<a href="{{ projet_item.lien }}">{{ projet_item.lien }}</a>
+				</p>
 				<div class="pop-contenu">
 					<p>{{ projet_item.contenu|raw }}</p>
 				</div>
 			</div>
 		</div>
 	{% endfor %}
+	{% for parcours_item in parcours %}
+		<div id="popupparcours-{{ loop.index }}" class="popupparcours">
+			<div class="popup-content">
+				<span class="close">&times;</span>
+				<img src="{{ asset('styles/img/projets/' ~ parcours_item.photo) }}" title="{{ parcours_item.nom }}" alt="Entreprise : {{ parcours_item.nom }}">
+				<hr>
+				<div class="popup-header">
+					<h2>{{ parcours_item.nom }}
+						-
+						{{ parcours_item.poste }}
+					</h2>
+				</div>
+				<hr>
+				<p>Statut :
+					{{ parcours_item.statut }}</p>
+				<p>Période :
+					{{ parcours_item.datedebut|date('m/Y') }}
+					à
+					{% if parcours_item.datefin == "" %}
+						maintenant
+					{% else %}
+						{{ parcours_item.datefin|date('m/Y') }}
+					{% endif %}
+				</p>
+
+				<div class="pop-contenu">
+					<p>{{ parcours_item.contenu|raw }}</p>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+	<div id="popupcontact-1" class="popupcontact">
+		<div class="popup-content">
+			<span class="close">&times;</span>
+			<div class="popup-header">
+				<h2>Me contacter par fomulaire</h2>
+			</div>
+			<hr>
+			{{ form_start(form, {'attr': {'id': 'demo-form'}}) }}
+			{{ form_widget(form.nom) }}
+			{% if form.nom.vars.errors|length > 0 %}
+				<span class="is-invalid">{{ form_errors(form.nom) }}</span>
+			{% endif %}
+			{{ form_widget(form.prenom) }}
+			{% if form.prenom.vars.errors|length > 0 %}
+				<span class="is-invalid">{{ form_errors(form.prenom) }}</span>
+			{% endif %}
+			{{ form_widget(form.mail) }}
+			{% if form.mail.vars.errors|length > 0 %}
+				<span class="is-invalid ">{{ form_errors(form.mail) }}</span>
+			{% endif %}
+			{{ form_widget(form.contenu) }}
+			{% if form.contenu.vars.errors|length > 0 %}
+				<span class="is-invalid">{{ form_errors(form.contenu) }}</span>
+			{% endif %}
+			<button class="g-recaptcha formulairebutton" data-sitekey="6LfC2-4qAAAAAGy5wEEqLnhv8hSeLZDI0KjrfF72" data-callback='onSubmit' data-action='submit'>Envoyer</button>
+			{{ form_end(form) }}
+			<div id="section-data" data-section="{% if app.request.get('section') %} {{ app.request.get('section') }}  {% else %} {{ section|json_encode|raw }} {% endif %}"></div>
+		</div>
+	</div>
 {% endblock %}

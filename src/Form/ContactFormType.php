@@ -89,13 +89,7 @@ class ContactFormType extends AbstractType
                         'maxMessage' => 'Le message ne peut pas contenir plus de {{ limit }} caractères.'
                     ])
                 ]
-            ])
-            ->add('button', SubmitType::class, [
-                'label' => 'Envoyer',
-                'attr' => [
-                    'class' => 'formulairebutton',
-                ],
-            ])             
+            ])            
         ;
     }
 

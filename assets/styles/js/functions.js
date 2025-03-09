@@ -1,7 +1,6 @@
 $(document).ready(function () {
   var canScroll = true,
-      scrollController = null;
-
+  scrollController = null;
   var sectionToActivate = document.getElementById('section-data').getAttribute('data-section');
 
   if (sectionToActivate !== null) {
@@ -9,21 +8,19 @@ $(document).ready(function () {
 
     if (sectionToActivate === 4) {
       var curActive = $('.side-nav').find('.is-active'),
-        curPos = $('.side-nav').children().index(curActive),
-        lastItem = $('.side-nav').children().length - 1,
-        nextPos = lastItem;
-
-    updateNavs(lastItem);
-    updateContent(curPos, nextPos, lastItem);
+      curPos = $('.side-nav').children().index(curActive),
+      lastItem = $('.side-nav').children().length - 1,
+      nextPos = lastItem;
+      updateNavs(lastItem);
+      updateContent(curPos, nextPos, lastItem);
     } else {
       updateNavs(sectionToActivate);
     }
   }
 
   document.addEventListener("wheel", function (e) {
-    if (!$('.outer-nav').hasClass('is-vis') && !$('.popup').is(':visible')) {
+    if (!$('.outer-nav').hasClass('is-vis') && !$('.popup').is(':visible') && !$('.popupparcours').is(':visible') && !$('.popupcontact').is(':visible')) {
       e.preventDefault();
-
       var delta = e.deltaY || e.wheelDelta || -e.detail * 20;
 
       if (delta > 50 && canScroll) {
@@ -44,23 +41,31 @@ $(document).ready(function () {
   $('.side-nav li, .outer-nav li').click(function () {
     if (!$(this).hasClass('is-active')) {
       var curActive = $(this).parent().find('.is-active'),
-          curPos = $(this).parent().children().index(curActive),
-          nextPos = $(this).parent().children().index($(this)),
-          lastItem = $(this).parent().children().length - 1;
-
+      curPos = $(this).parent().children().index(curActive),
+      nextPos = $(this).parent().children().index($(this)),
+      lastItem = $(this).parent().children().length - 1;
       updateNavs(nextPos);
       updateContent(curPos, nextPos, lastItem);
     }
   });
 
-  $('.cta').click(function () {
+  $('.meContacter').click(function () {
     var curActive = $('.side-nav').find('.is-active'),
-        curPos = $('.side-nav').children().index(curActive),
-        lastItem = $('.side-nav').children().length - 1,
-        nextPos = lastItem;
-
+    curPos = $('.side-nav').children().index(curActive),
+    lastItem = $('.side-nav').children().length - 1,
+    nextPos = lastItem;
     updateNavs(lastItem);
     updateContent(curPos, nextPos, lastItem);
+  });
+
+  $('.accueil').click(function () {
+    var curActive = $('.side-nav').find('.is-active'),
+        curPos = $('.side-nav').children().index(curActive),
+        firstItem = 0, 
+        lastItem = $('.side-nav').children().length - 1;
+    
+    updateNavs(firstItem);    
+    updateContent(curPos, firstItem, lastItem);
   });
 
   var targetElement = document.getElementById('viewport'),
@@ -71,16 +76,16 @@ $(document).ready(function () {
   });
 
   $(document).keyup(function (e) {
-    if (!$('.outer-nav').hasClass('is-vis') && !$('.popup').is(':visible')) {
+    if (!$('.outer-nav').hasClass('is-vis') && !$('.popup').is(':visible') && !$('.popupparcours').is(':visible') && !$('.popupcontact').is(':visible')) {
       updateHelper(e.keyCode === 40 ? 1 : (e.keyCode === 38 ? -1 : 0));
     }
   });
 
   function updateHelper(param) {
     var curActive = $('.side-nav').find('.is-active'),
-        curPos = $('.side-nav').children().index(curActive),
-        lastItem = $('.side-nav').children().length - 1,
-        nextPos = curPos;
+    curPos = $('.side-nav').children().index(curActive),
+    lastItem = $('.side-nav').children().length - 1,
+    nextPos = curPos;
 
     if (param > 0 && curPos !== lastItem) nextPos = curPos + 1;
     else if (param < 0 && curPos !== 0) nextPos = curPos - 1;
@@ -132,6 +137,6 @@ $(document).ready(function () {
       $('.outer-nav, .outer-nav li, .outer-nav--return').removeClass('is-vis');
     });
   }
-
+  
   outerNav();
 });

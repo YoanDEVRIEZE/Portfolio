@@ -27,27 +27,31 @@ final class AccueilController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $contact = $form->getData();
-            $entityManager->persist($contact);
-            $entityManager->flush(); 
-            
-            $this->addFlash('success', 'Votre message a bien ete envoye !');            
+            $recaptchaResponse = $request->request->get('g-recaptcha-response');
+
+            if ($recaptchaResponse) {
+                $contact = $form->getData();
+                $entityManager->persist($contact);
+                $entityManager->flush(); 
+
+                $this->addFlash('success', 'Message envoyé !'); 
+                
+                return $this->redirectToRoute('portfolio_accueil', [
+                    'presentation' => $presentation,
+                    'projet' => $projet,
+                    'parcours' => $parcours,
+                    'skill' => $skill,
+                    'form' => $form,
+                    'section' => 4,
+                ]);
+            } else {
+                $this->addFlash('error', 'Vous êtes un robot !'); 
+            }            
         } 
         
         if ($form->isSubmitted() && !$form->isValid()) {
-            $this->addFlash('error', 'Votre message contient des erreurs');            
+            $this->addFlash('error', 'Erreur dans le formulaire !');            
         }  
-
-        if ($form->isSubmitted()) {
-            return $this->render('accueil/index.html.twig', [
-                'presentation' => $presentation,
-                'projet' => $projet,
-                'parcours' => $parcours,
-                'skill' => $skill,
-                'form' => $form->createView(),
-                'section' => 4, 
-            ]);
-        }
 
         return $this->render('accueil/index.html.twig', [
             'presentation' => $presentation,
@@ -55,7 +59,7 @@ final class AccueilController extends AbstractController
             'parcours' => $parcours,
             'skill' => $skill,
             'form' => $form,
-            'section' => 0, 
+            'section' => ($form->isSubmitted()) ? 4 : 0, 
         ]);
     }
 }

@@ -6,19 +6,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>
 			{% block title %}
-				Yoan DE VRIEZE - Portfolio
+				Portfolio de Yoan DE VRIEZE - Développeur PHP Symfony/Laravel
 			{% endblock %}
 		</title>
-        <meta name="description" content="Développeur PHP spécialisé en Symfony, je conçois des applications web performantes et optimisées. Passionné par le développement back-end, j'allie expertise technique et bonnes pratiques pour créer des solutions sur mesure.">
+        <meta name="description" content="Développeur PHP spécialisé en Symfony, je crée des applications web performantes avec une expertise en back-end, en utilisant les bonnes pratiques pour des solutions sur mesure.">
         <meta name="keywords" content="Portfolio, Yoan, DE VRIEZE, Yoan DE VRIEZE, PHP, Symfony, Framework, Développeur, Développeur PHP, Doctrine, MySQL, Visual code studio">
         <meta name="author" content="Yoan DE VRIEZE">
-		<link rel="icon" href="{{ asset('styles/img/profil/Profil.webp') }}">
-		<link rel="stylesheet" href="{{ asset('styles/css/main.css') }}">
+		<meta property="og:title" content="Yoan DE VRIEZE - Portfolio">
+		<meta property="og:description" content="Développeur PHP Symfony, créateur d'applications web performantes. Découvrez mon portfolio.">
+		<meta property="og:image" content="{{ asset('styles/img/profil/profil.webp') }}">
+		<meta property="og:url" content="https://127.0.0.1:8000">
+		<meta name="twitter:card" content="summary_large_image">
+		<link rel="icon" href="{{ asset('styles/img/profil/profil.webp') }}">
 
 		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('styles/css/main.css') }}">
         {% endblock %}
 
 		{% block javascripts %}
+			<script src="https://www.google.com/recaptcha/api.js"></script>
+			<script>
+				function onSubmit(token) {
+					document.getElementById("demo-form").submit();
+				}
+			</script>
         {% endblock %}
 	</head>
 	<body>
@@ -28,8 +39,8 @@
 					<div id="viewport" class="l-viewport">
 						<div class="l-wrapper">
 							<header class="header">
-								<a class="header--logo">
-									<img class="profil-img" src="{{ asset('styles/img/profil/Profil.webp') }}" alt="Global">
+								<a class="header--logo accueil" aria-label="Aller à la page d'accueil" title="Retourner à l'accueil">
+									<img class="profil-img" src="{{ asset('styles/img/profil/profil.webp') }}" title="Yoan DE VRIEZE" alt="Yoan DE VRIEZE">
 									<p>Yoan DE VRIEZE</p>
 								</a>
 							</header>
