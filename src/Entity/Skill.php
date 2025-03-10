@@ -6,6 +6,7 @@ use App\Repository\SkillRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SkillRepository::class)]
 class Skill
@@ -15,16 +16,22 @@ class Skill
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank] 
+    #[Assert\Length(min: 1, max: 100)] 
     private ?string $titre = null;
 
     #[ORM\Column(length: 255)]
     private ?string $logo = null;
 
     #[ORM\Column]
+    #[Assert\Range(min: 0, max: 100)]
+    #[Assert\NotBlank]
     private ?int $niveau = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 7)]
+    #[Assert\NotBlank]
+    #[Assert\Regex(pattern: '/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/', message: 'La couleur doit être au format HEX (#RRGGBB ou #RGB).')]
     private ?string $couleur = null;
 
     /**

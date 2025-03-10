@@ -20,10 +20,12 @@
 		<link rel="icon" href="{{ asset('styles/img/profil/profil.webp') }}">
 
 		{% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
 			<link rel="stylesheet" href="{{ asset('styles/css/main.css') }}">
         {% endblock %}
 
 		{% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
 			<script src="https://www.google.com/recaptcha/api.js"></script>
 			<script>
 				function onSubmit(token) {
