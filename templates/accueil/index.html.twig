@@ -55,75 +55,90 @@
 		</li>
 		<li class="l-section section">
 			<div class="work">
-				<h2>Mes projet et réalisations</h2>
-				<div class="work--lockup">
-					<ul class="slider">
-						{% for projet_item in projet %}
-							<li class="slider--item {% if loop.first %}slider--item-left{% elseif loop.index == 2 %}slider--item-center{% else %}slider--item-right{% endif %}">
-								<a href="#popup-{{ loop.index }}" class="open-popup" title="{{ projet_item.titre }}">
-									<div class="slider--item-image">
-										<img src="{{ asset('styles/img/icones_projets/' ~ projet_item.photocouverture) }}" tilte="{{ projet_item.alt }}" alt="{{ projet_item.alt }}">
-									</div>
-									<p class="slider--item-title">{{ projet_item.titre }}</p>
-									<p class="slider--item-description">{{ projet_item.description }}</p>
-								</a>
-							</li>
-						{% endfor %}
-					</ul>
-					<div class="slider--prev">
-						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-							<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-								<path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
-							</g>
-						</svg>
+				{% if projet is empty %}
+					<h1>Aucun projet trouvé.</h1>
+				{% else %}
+					<h2>Mes projet et réalisations</h2>
+					<div class="work--lockup">
+						<ul class="slider">
+							{% for projet_item in projet %}
+								<li class="slider--item {% if loop.first %}slider--item-left{% elseif loop.index == 2 %}slider--item-center{% else %}slider--item-right{% endif %}">
+									<a href="#popup-{{ loop.index }}" class="open-popup" title="{{ projet_item.titre }}">
+										<div class="slider--item-image">
+											<img src="{{ asset('styles/img/icones_projets/' ~ projet_item.photocouverture) }}" tilte="{{ projet_item.alt }}" alt="{{ projet_item.alt }}">
+										</div>
+										<p class="slider--item-title">{{ projet_item.titre }}</p>
+										<p class="slider--item-description">{{ projet_item.description }}</p>
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+						<div class="slider--prev">
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+								<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+									<path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
+								</g>
+							</svg>
+						</div>
+						<div class="slider--next">
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+								<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+									<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+								</g>
+							</svg>
+						</div>
 					</div>
-					<div class="slider--next">
-						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-							<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-								<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-							</g>
-						</svg>
-					</div>
-				</div>
+				{% endif %}
 			</div>
 		</li>
 		<li class="l-section section">
 			<div class="about">
 				<div class="about--banner">
 					<h2>Mon<br>Parcours<br>Professionnel</h2>
-					<a href="#0" title="Voir tout mon parcours professionnel">Voir tout mon parcours
-						<span>
-							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-								<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-									<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-								</g>
-							</svg>
-						</span>
-					</a>
-					<br>
-					<a href="documents/{{ user.cvFileName }}" download type="application/pdf" title="Télécharger le CV de {{ user.prenom}} {{ user.nom }}">Télécharger mon CV
-						<span>
-							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-								<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-									<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-								</g>
-							</svg>
-						</span>
-					</a>
-				</div>
-				<div class="about--options">
-					{% for item_parcours in parcours %}
-						<a href="#popupparcours-{{ loop.index }}" class="open-popup" style="background-image: url('{{ asset('styles/img/icones_entreprises/' ~ item_parcours.photocouverture) }}');" title="{{ item_parcours.nom }}">
-							<h3>{{ item_parcours.nom }}</h3>
+					{% if parcours is not empty %}
+						<a href="#0" title="Voir tout mon parcours professionnel">Voir tout mon parcours					
+							<span>
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+									<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+										<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+									</g>
+								</svg>
+							</span>
 						</a>
-					{% endfor %}
+					{% endif %}
+					<br>
+					{% if user.cvFileName != "" %}
+						<a href="documents/{{ user.cvFileName }}" download type="application/pdf" title="Télécharger le CV de {{ user.prenom}} {{ user.nom }}">Télécharger mon CV
+							<span>
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+									<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+										<path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+									</g>
+								</svg>
+							</span>
+						</a>
+					{% endif %}
 				</div>
+				{% if parcours is empty %}
+					<h1>Aucun parcours trouvé.</h1>
+				{% else %}
+					<div class="about--options">
+						{% for item_parcours in parcours %}
+							<a href="#popupparcours-{{ loop.index }}" class="open-popup" style="background-image: url('{{ asset('styles/img/icones_entreprises/' ~ item_parcours.photocouverture) }}');" title="{{ item_parcours.nom }}">
+								<h3>{{ item_parcours.nom }}</h3>
+							</a>
+						{% endfor %}
+					</div>
+				{% endif %}
 			</div>
 		</li>
 		<li class="l-section section">
 			<div class="hire">
 				<h2>Mes compétences</h2>
 				<div class="work-request--options">
+				{% if skill is empty %}
+					<h1>Aucune compétence trouvée.</h1>
+				{% else %}
 					{% for skill_item in skill %}
 						<div class="progress-container">
 							<span class="progress-label">{{ skill_item.titre }}</span>
@@ -133,6 +148,7 @@
 							</div>
 						</div>
 					{% endfor %}
+				{% endif %}
 				</div>
 			</div>
 		</li>
