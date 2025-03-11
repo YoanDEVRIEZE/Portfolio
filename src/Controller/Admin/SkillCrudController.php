@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Skill;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
@@ -22,7 +24,8 @@ class SkillCrudController extends AbstractCrudController
         return $crud
             ->setPageTitle(Crud::PAGE_NEW, 'Ajouter un skill')
             ->setPageTitle(Crud::PAGE_EDIT, 'Modifier un skill')
-            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des skills');
+            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des skills')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Skill');
     }
 
     public function configureFields(string $pageName): iterable
@@ -54,5 +57,13 @@ class SkillCrudController extends AbstractCrudController
                 ->setHelp('Selectionnez une couleur correspondante au skill')
                 ->setLabel('Couleur associée:')
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->add(Crud::PAGE_EDIT, Action::INDEX)
+            ->add(Crud::PAGE_INDEX, Action::DETAIL)
+            ->add(Crud::PAGE_EDIT, Action::DETAIL);
     }
 }

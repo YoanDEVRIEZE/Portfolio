@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Parcours;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -22,7 +24,8 @@ class ParcoursCrudController extends AbstractCrudController
         return $crud
             ->setPageTitle(Crud::PAGE_NEW, 'Ajouter un parcours')
             ->setPageTitle(Crud::PAGE_EDIT, 'Modifier un parcours')
-            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des parcours');
+            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des parcours')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Entreprise');
     }
 
     public function configureFields(string $pageName): iterable
@@ -78,5 +81,13 @@ class ParcoursCrudController extends AbstractCrudController
                 ->setLabel('Contenu du parcours :')
                 ->setHelp('Entre 1 et 1024 caractères maximum, au format HTML')            
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->add(Crud::PAGE_EDIT, Action::INDEX)
+            ->add(Crud::PAGE_INDEX, Action::DETAIL)
+            ->add(Crud::PAGE_EDIT, Action::DETAIL);
     }
 }

@@ -34,7 +34,8 @@ class UserCrudController extends AbstractCrudController
     {
         return $crud
             ->setPageTitle(Crud::PAGE_EDIT, 'Modifier un utilisateur')
-            ->setPageTitle(Crud::PAGE_INDEX, 'Utilisateur');
+            ->setPageTitle(Crud::PAGE_INDEX, 'Utilisateur')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Utilisateur');
     }
 
     public function configureFields(string $pageName): iterable

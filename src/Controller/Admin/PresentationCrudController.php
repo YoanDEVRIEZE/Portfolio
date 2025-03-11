@@ -21,7 +21,8 @@ class PresentationCrudController extends AbstractCrudController
     {
         return $crud
             ->setPageTitle(Crud::PAGE_EDIT, 'Modifier une présentation')
-            ->setPageTitle(Crud::PAGE_INDEX, 'Vos 3 présentations');
+            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des présentations')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Présentation');
     }
     
     public function configureFields(string $pageName): iterable
@@ -42,6 +43,8 @@ class PresentationCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-            ->disable(Action::NEW, Action::DELETE); 
+            ->add(Crud::PAGE_EDIT, Action::INDEX)
+            ->add(Crud::PAGE_INDEX, Action::DETAIL)
+            ->add(Crud::PAGE_EDIT, Action::DETAIL); 
     }
 }
