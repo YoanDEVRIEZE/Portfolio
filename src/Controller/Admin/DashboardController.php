@@ -7,14 +7,13 @@ use App\Entity\Parcours;
 use App\Entity\Presentation;
 use App\Entity\Projet;
 use App\Entity\Skill;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\RouteCollection;
-use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 
 #[AdminDashboard(routePath: '/Admin/Dashboard', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
@@ -54,10 +53,11 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Présentation', 'fas fa-user', Presentation::class);
+        yield MenuItem::linkToCrud('Présentation', 'fas fa-list', Presentation::class);
         yield MenuItem::linkToCrud('Mes projets', 'fas fa-briefcase', Projet::class);
         yield MenuItem::linkToCrud('Parcours', 'fas fa-graduation-cap', Parcours::class);
         yield MenuItem::linkToCrud('Skills', 'fas fa-lightbulb', Skill::class);
         yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', Contact::class);
+        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class);
     }
 }
