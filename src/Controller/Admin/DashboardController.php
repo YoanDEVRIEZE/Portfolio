@@ -61,7 +61,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Mes projets', 'fas fa-briefcase', Projet::class);
         yield MenuItem::linkToCrud('Parcours', 'fas fa-graduation-cap', Parcours::class);
         yield MenuItem::linkToCrud('Skills', 'fas fa-lightbulb', Skill::class);
-        yield MenuItem::linkToCrud('Messages ('. $this->nbMessage .')', 'fas fa-envelope', Contact::class);
+        yield MenuItem::linkToCrud('Messages <span style="color: red;">('. $this->nbMessage .')</span>', 'fas fa-envelope', Contact::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Paramètres du site', 'fas fa-globe', Site::class);
         yield MenuItem::linkToRoute('Voir le site', 'fas fa-file-alt', 'portfolio_accueil');
