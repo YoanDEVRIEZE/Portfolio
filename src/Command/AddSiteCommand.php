@@ -54,18 +54,8 @@ class AddSiteCommand extends Command
 
         $envPath = __DIR__ . '/../../.env';
         $envContent = file_get_contents($envPath);
-
-        if (strpos($envContent, 'RECAPTCHA3_KEY=') !== false) {
-            $envContent = preg_replace('/RECAPTCHA3_KEY=.*/', 'RECAPTCHA3_KEY="' . $this->recaptchaPublicKey.'"', $envContent);
-        } else {
-            $envContent .= '\nRECAPTCHA3_KEY="' . $this->recaptchaPublicKey.'"';
-        }
-
-        if (strpos($envContent, 'RECAPTCHA3_SECRET=') !== false) {
-            $envContent = preg_replace('/RECAPTCHA3_SECRET=.*/', 'RECAPTCHA3_SECRET="' . $this->recaptchaSecretKey.'"', $envContent);
-        } else {
-            $envContent .= '\nRECAPTCHA3_SECRET="' . $this->recaptchaSecretKey.'"';
-        }
+        $envContent = preg_replace('/RECAPTCHA3_KEY=.*/', 'RECAPTCHA3_KEY="' . $this->recaptchaPublicKey.'"', $envContent);        
+        $envContent = preg_replace('/RECAPTCHA3_SECRET=.*/', 'RECAPTCHA3_SECRET="' . $this->recaptchaSecretKey.'"', $envContent);
 
         file_put_contents($envPath, $envContent);
 
