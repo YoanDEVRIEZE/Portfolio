@@ -286,7 +286,7 @@
 			{% if form.contenu.vars.errors|length > 0 %}
 				<span class="is-invalid">{{ form_errors(form.contenu) }}</span>
 			{% endif %}
-			<button class="g-recaptcha formulairebutton" data-sitekey="{{ site.apirecaptcha }}" data-callback='onSubmit' data-action='submit'>Envoyer</button>
+			<button class="formulairebutton" type='submit'>Envoyer</button>
 			{{ form_end(form) }}
 			<div id="section-data" data-section="{% if app.request.get('section') %} {{ app.request.get('section') }}  {% else %} {{ section|json_encode|raw }} {% endif %}"></div>
 		</div>

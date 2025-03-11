@@ -21,34 +21,40 @@ class DashboardController extends AbstractDashboardController
 {
     private EntityManagerInterface $entityManager;
     private $nbMessage;
-    private $favicon;
+    private $user;
+    private $site;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
         $this->nbMessage = $this->entityManager->getRepository(Contact::class)->count([]);
-        $this->favicon = $this->entityManager->getRepository(User::class)->find(1);
+        $this->user = $this->entityManager->getRepository(User::class)->find(1);
+        $this->site = $this->entityManager->getRepository(Site::class)->find(1);
     }
     
     public function index(): Response
     {        
         $nbProjet = $this->entityManager->getRepository(Projet::class)->count([]);
+        $projets = $this->entityManager->getRepository(Projet::class)->findby([], ['id' => 'DESC'], 3);
         $nbParcours = $this->entityManager->getRepository(Parcours::class)->count([]);
-        $nbSkill = $this->entityManager->getRepository(Skill::class)->count([]);
+        $parcours = $this->entityManager->getRepository(Projet::class)->findby([], ['id' => 'DESC'], 3);
+        $skill = $this->entityManager->getRepository(Skill::class)->findAll();
 
         return $this->render('admin/my-dashboard.html.twig', [
             'nbMessage' => $this->nbMessage,
             'nbProjet' => $nbProjet,
             'nbParcours' => $nbParcours,
-            'nbSkill' => $nbSkill
+            'skills' => $skill,
+            'projets' => $projets,
+            'parcours' => $parcours
         ]);
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Portfolio Yoan DE VRIEZE Développeur PHP Symfony/Laravel')
-            ->setFaviconPath('styles/img/profil/'.$this->favicon->getPhoto())
+            ->setTitle('Portfolio '. $this->user->getPrenom() . ' '. $this->user->getNom() .' '.$this->site->getTitle())
+            ->setFaviconPath('styles/img/profil/'.$this->user->getPhoto())
             ->renderContentMaximized()
             ->setDefaultColorScheme('dark')
             ->setLocales(['fr', 'fr']);

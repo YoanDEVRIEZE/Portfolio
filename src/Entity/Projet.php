@@ -55,6 +55,9 @@ class Projet
     #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'projets')]
     private Collection $skill;
 
+    #[ORM\Column(length: 255)]
+    private ?string $statut = null;
+
     public function __construct()
     {
         $this->skill = new ArrayCollection();
@@ -169,6 +172,18 @@ class Projet
     public function removeSkill(Skill $skill): static
     {
         $this->skill->removeElement($skill);
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): static
+    {
+        $this->statut = $statut;
 
         return $this;
     }

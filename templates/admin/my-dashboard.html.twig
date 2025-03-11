@@ -11,40 +11,75 @@
         <div class="col-md-3">
             <div class="card text-white mb-3" style="background-color:rgb(52, 104, 28);">
                 <div class="card-header">
-                    📩 Nombre de Messages
+                    📩 Vos messages - <a style="color:#fff" href="{{ path('admin_contact_index') }}">Voir ➡️</a>
                 </div>
                 <div class="card-body">
-                    <h2 class="card-title">{{ nbMessage }}</h2>
+                    <h3 class="card-title">{{ nbMessage }} message(s)</h3>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card text-white mb-3" style="background-color:rgb(26, 60, 88);">
                 <div class="card-header">
-                    📌 Total de projets
+                    📌 Vos projets - <a style="color:#fff" href="{{ path('admin_projet_index') }}">Voir ➡️</a>
                 </div>
                 <div class="card-body">
-                    <h2 class="card-title">{{ nbProjet }}</h2>
+                    <h3 class="card-title">{{ nbProjet }} projet(s)</h3>
+                    <hr>
+                    {% if projets is not empty %}
+                        <ul style="padding: 0; list-style: none;">
+                            {% for projet in projets %}
+                                <li style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span>{{ projet.statut }}</span>
+                                    <span style="margin-left: 10px; font-weight: bold;">{{ projet.titre }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <h3>Aucun projet.</h3>
+                    {% endif %}
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card text-white mb-3" style="background-color:rgb(92, 24, 71);">
                 <div class="card-header">
-                    🏢 Nombre total d'entreprise
+                    🏢 Où est-ce que j’ai travaillé ? - <a style="color:#fff" href="{{ path('admin_parcours_index') }}">Voir ➡️</a>
                 </div>
                 <div class="card-body">
-                    <h2 class="card-title">{{ nbParcours }}</h2>
+                    <h3 class="card-title">{{ nbParcours }} entreprise(s)</h3>
+                    <hr>
+                    {% if parcours is not empty %}
+                        <ul style="padding: 0; list-style: none;">
+                            {% for parcour in parcours %}
+                                <li style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span>
+                                        {% if parcour.datefin is empty %}
+                                            En cours
+                                        {% else %}
+                                            {{ parcour.datedebut|date('Y') }} - {{ parcour.datefin|date('Y') }}
+                                        {% endif %}
+                                    </span>
+                                    <span style="margin-left: 10px; font-weight: bold;">{{ parcour.nom }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <h3>Aucun parcours.</h3>
+                    {% endif %}
                 </div>
             </div>
-        </div>
+        </div>  
         <div class="col-md-3">
             <div class="card text-white mb-3" style="background-color:rgb(146, 117, 29);">
                 <div class="card-header">
-                    🛠️ Nombre de compétences
+                    🛠️ Vos Skills - <a style="color:#fff" href="{{ path('admin_skill_index') }}">Voir ➡️</a>
                 </div>
                 <div class="card-body">
-                    <h2 class="card-title">{{ nbSkill }}</h2>
+                    {% for skill in skills %}
+                        <img width="41px" src="{{ asset('styles/img/icones_competences/' ~ skill.logo) }}"/>
+                    {% endfor %}
+                    
                 </div>
             </div>
         </div>

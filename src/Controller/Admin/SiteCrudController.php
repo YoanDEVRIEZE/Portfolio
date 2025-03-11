@@ -55,11 +55,6 @@ class SiteCrudController extends AbstractCrudController
                 ->setMaxLength(250)
                 ->setHelp('Entre 1 et 250 caractères maximum')
                 ->setLabel('URL de votre site :'),
-            TextField::new('api_recaptcha')
-                ->setRequired(true)
-                ->setMaxLength(250)
-                ->setHelp('Entrer votre clé API de Google reCAPTCHA v3')
-                ->setLabel('reCAPTCHA v3 :'),
         ];
     }
 

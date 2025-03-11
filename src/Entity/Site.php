@@ -32,12 +32,6 @@ class Site
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $url = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\Length(min: 1, max: 250)]
-    #[Assert\NotNull]
-    #[Assert\NotBlank]
-    private ?string $api_recaptcha = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -99,18 +93,6 @@ class Site
     public function setUrl(?string $url): static
     {
         $this->url = $url;
-
-        return $this;
-    }
-
-    public function getApiRecaptcha(): ?string
-    {
-        return $this->api_recaptcha;
-    }
-
-    public function setApiRecaptcha(string $api_recaptcha): static
-    {
-        $this->api_recaptcha = $api_recaptcha;
 
         return $this;
     }
