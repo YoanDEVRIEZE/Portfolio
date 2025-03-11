@@ -1839,8 +1839,8 @@ body {
     color: #000;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    gap: 10px; 
+    align-items: center;
+    gap: 10px;
 }
 
 .formulaireinput {

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>
+			{% block title %}
+			{% endblock %}
+		</title>
+        <meta name="description" content="Développeur PHP spécialisé en Symfony, je crée des applications web performantes avec une expertise en back-end, en utilisant les bonnes pratiques pour des solutions sur mesure.">
+        <meta name="keywords" content="Portfolio, Yoan, DE VRIEZE, Yoan DE VRIEZE, PHP, Symfony, Framework, Développeur, Développeur PHP, Doctrine, MySQL, Visual code studio">
+        <meta name="author" content="Yoan DE VRIEZE">
+		<meta property="og:title" content="Yoan DE VRIEZE - Portfolio">
+		<meta property="og:description" content="Développeur PHP Symfony, créateur d'applications web performantes. Découvrez mon portfolio.">
+		<meta property="og:image" content="{{ asset('styles/img/profil/profil.webp') }}">
+		<meta property="og:url" content="https://127.0.0.1:8000">
+		<meta name="twitter:card" content="summary_large_image">
+		<link rel="icon" href="{{ asset('styles/img/profil/profil.webp') }}">
+
+		{% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+			<link rel="stylesheet" href="{{ asset('styles/css/login.css') }}">
+        {% endblock %}
+
+		{% block javascripts %}
+        {% endblock %}
+	</head>
+	<body>
+		{% block body %}
+		{% endblock %}
+	</body>
+</html>
