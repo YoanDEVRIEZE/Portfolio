@@ -37,7 +37,7 @@
 						</svg>
 						<span class="btn-background"></span>
 					</button>
-					<img class="profil-img-accueil" src="{{ asset('styles/img/profil/Profil.webp') }}" title="Yoan DE VRIEZE" alt="Yoan DE VRIEZE">
+					<img class="profil-img-accueil" src="{{ asset('styles/img/profil/' ~ user.photo) }}" title="{{ user.prenom}} {{ user.nom }}" alt="{{ user.prenom}} {{ user.nom }}">
 				</div>
 				<div class="intro--options">
 					{% for presentation_item in presentation %}
@@ -101,7 +101,7 @@
 						</span>
 					</a>
 					<br>
-					<a href="documents/Yoan DE VRIEZE.pdf" download type="application/pdf" title="Télécharger le CV de Yoan DE VRIEZE">Télécharger mon CV
+					<a href="documents/{{ user.cvFileName }}" download type="application/pdf" title="Télécharger le CV de {{ user.prenom}} {{ user.nom }}">Télécharger mon CV
 						<span>
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
 								<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
@@ -160,20 +160,20 @@
 										</div>
 									{% endfor %}
 									<div>
-										<a href="mailto:devrieze.yoan@gmail.com" title="devrieze.yoan@gmail.com">devrieze.yoan@gmail.com</a>
+										<a href="mailto:{{ user.email }}" title="{{ user.email }}">{{ user.email }}</a>
 									</div>
 									<div>
-										<a href="tel:+33770305780" title="0770305780">+33 7 70 30 57 80</a>
+										Tel :<a href="tel:{{ user.telephone }}" title="{{ user.telephone }}">{{ user.telephone }}</a>
 									</div>
 								</div>
 								<ul class="modal--options">
 									<li>
-										<a class="linkedin" href="https://www.linkedin.com/in/yoan-de-vrieze" target="_blank" title="Linkedin">
+										<a class="linkedin" href="{{ user.linkedin }}" target="_blank" title="Linkedin">
 											<img src="{{ asset('styles/img/icones_contact/icons8-linkedin-48.webp') }}">Linkedin
 										</a>
 									</li>
 									<li>
-										<a class="github" href="https://github.com/YoanDEVRIEZE" target="_blank" title="GitHub">
+										<a class="github" href="{{ user.git }}" target="_blank" title="GitHub">
 											<img src="{{ asset('styles/img/icones_contact/icons8-github-48.webp') }}">GitHub
 										</a>
 									</li>

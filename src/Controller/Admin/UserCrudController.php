@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -63,6 +64,16 @@ class UserCrudController extends AbstractCrudController
                 ->setRequired(false)
                 ->setMaxLength(10)
                 ->setHelp('Entre 1 et 10 caractères maximum'),
+            ImageField::new('photo')
+                ->setLabel('Photo du profil :')
+                ->setHelp('Image au format .webp')
+                ->setBasePath('styles/img/profil/')
+                ->setUploadDir('assets/styles/img/profil/')
+                ->setUploadedFileNamePattern('[randomhash].webp')
+                ->setRequired(true)
+                ->setFormTypeOptions([
+                    'attr' => ['accept' => 'image/webp']
+                ]),
             TextField::new('Password')
                 ->setFormType(RepeatedType::class)
                 ->setFormTypeOptions([
