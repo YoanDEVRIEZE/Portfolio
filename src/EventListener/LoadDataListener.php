@@ -5,6 +5,7 @@ namespace App\EventListener;
 use App\Repository\ParcoursRepository;
 use App\Repository\PresentationRepository;
 use App\Repository\ProjetRepository;
+use App\Repository\SiteRepository;
 use App\Repository\SkillRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
@@ -15,15 +16,17 @@ use Twig\Environment;
 final class LoadDataListener
 {
     private $twig;
+    private $site;
     private $user;
     private $presentation;
     private $projet;
     private $parcours;
     private $skill;
 
-    public function __construct(Environment $twig, UserRepository $user, PresentationRepository $presentation, ProjetRepository $projet, ParcoursRepository $parcours, SkillRepository $skill)
+    public function __construct(Environment $twig, SiteRepository $site, UserRepository $user, PresentationRepository $presentation, ProjetRepository $projet, ParcoursRepository $parcours, SkillRepository $skill)
     {
         $this->twig = $twig;
+        $this->site = $site->find(1);
         $this->user = $user->find(1);
         $this->presentation = $presentation->findAll();
         $this->projet = $projet->findBy([],['id' => 'DESC']);
@@ -34,6 +37,7 @@ final class LoadDataListener
     #[AsEventListener(event: KernelEvents::REQUEST)]
     public function onKernelRequest(RequestEvent $event): void
     {
+        $this->twig->addGlobal('site', $this->site);
         $this->twig->addGlobal('user', $this->user);
         $this->twig->addGlobal('presentation', $this->presentation);
         $this->twig->addGlobal('projet', $this->projet);

@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>
 			{% block title %}
-				Portfolio de {{ user.prenom}} {{ user.nom }} - Développeur PHP Symfony/Laravel
+				Portfolio de {{ user.prenom}} {{ user.nom }} - {{ site.title }}
 			{% endblock %}
 		</title>
-        <meta name="description" content="Développeur PHP spécialisé en Symfony, je crée des applications web performantes avec une expertise en back-end, en utilisant les bonnes pratiques pour des solutions sur mesure.">
-        <meta name="keywords" content="Portfolio, {{ user.prenom }}, {{ user.nom }}, {{ user.prenom}} {{ user.nom }}, PHP, Symfony, Framework, Développeur, Développeur PHP, Doctrine, MySQL, Visual code studio">
+        <meta name="description" content="{{ site.description }}">
+        <meta name="keywords" content="{{ site.keywords|join(',') }}">
         <meta name="author" content="Yoan DE VRIEZE">
 		<meta property="og:title" content="{{ user.prenom}} {{ user.nom }} - Portfolio">
-		<meta property="og:description" content="Développeur PHP Symfony, créateur d'applications web performantes. Découvrez mon portfolio.">
+		<meta property="og:description" content="{{ site.reseaudescription }}">
 		<meta property="og:image" content="{{ asset('styles/img/profil/' ~ user.photo) }}">
-		<meta property="og:url" content="https://127.0.0.1:8000">
+		<meta property="og:url" content="{{ site.url }}">
 		<meta name="twitter:card" content="summary_large_image">
 		<link rel="icon" href="{{ asset('styles/img/profil/' ~ user.photo) }}">
 

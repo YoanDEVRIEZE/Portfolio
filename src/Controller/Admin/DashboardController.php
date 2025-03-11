@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use App\Entity\Parcours;
 use App\Entity\Presentation;
 use App\Entity\Projet;
+use App\Entity\Site;
 use App\Entity\Skill;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -59,5 +60,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Skills', 'fas fa-lightbulb', Skill::class);
         yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', Contact::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Paramètres du site', 'fas fa-globe', Site::class);
+        yield MenuItem::linkToRoute('Voir le site', 'fas fa-file-alt', 'portfolio_accueil');
+        yield MenuItem::linkToLogout('Deconnexion', 'fas fa-sign-out-alt');
     }
 }
