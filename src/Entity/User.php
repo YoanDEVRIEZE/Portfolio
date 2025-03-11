@@ -15,6 +15,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[Vich\Uploadable]
+#[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface, Serializable
 {
     #[ORM\Id]
@@ -99,6 +100,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photo = null;
+
+    #[ORM\Version]
+    #[ORM\Column(type: 'integer')]
+    private $version;
 
     public function getId(): ?int
     {
@@ -235,6 +240,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     public function setPhoto(?string $photo): static
     {
         $this->photo = $photo;
+        return $this;
+    }
+
+    public function getVersion(): ?int
+    {
+        return $this->version;
+    }
+
+    public function setVersion(int $version): self
+    {
+        $this->version = $version;
+
         return $this;
     }
 
