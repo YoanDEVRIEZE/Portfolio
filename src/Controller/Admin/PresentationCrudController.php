@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Presentation;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -12,6 +13,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class PresentationCrudController extends AbstractCrudController
 {
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     public static function getEntityFqcn(): string
     {
         return Presentation::class;
@@ -42,6 +50,12 @@ class PresentationCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
+        $count = $this->entityManager->getRepository(Presentation::class)->count([]);
+
+        if ($count >= 3) {
+            $actions = $actions->disable(Action::NEW);
+        }
+
         return $actions
             ->add(Crud::PAGE_EDIT, Action::INDEX)
             ->add(Crud::PAGE_INDEX, Action::DETAIL)
