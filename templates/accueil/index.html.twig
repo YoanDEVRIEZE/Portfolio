@@ -183,16 +183,20 @@
 									</div>
 								</div>
 								<ul class="modal--options">
-									<li>
-										<a class="linkedin" href="{{ user.linkedin }}" target="_blank" title="Linkedin">
-											<img src="{{ asset('styles/img/icones_contact/icons8-linkedin-48.webp') }}">Linkedin
-										</a>
-									</li>
-									<li>
-										<a class="github" href="{{ user.git }}" target="_blank" title="GitHub">
-											<img src="{{ asset('styles/img/icones_contact/icons8-github-48.webp') }}">GitHub
-										</a>
-									</li>
+									{% if user.linkedin != "" %}
+										<li>
+											<a class="linkedin" href="{{ user.linkedin }}" target="_blank" title="Linkedin de {{ user.prenom }} {{ user.nom }}">
+												<img src="{{ asset('styles/img/icones_contact/icons8-linkedin-48.webp') }}">Linkedin
+											</a>
+										</li>
+									{% endif %}
+									{% if user.git != "" %}
+										<li>
+											<a class="github" href="{{ user.git }}" target="_blank" title="GitHub de {{ user.prenom }} {{ user.nom }}">
+												<img src="{{ asset('styles/img/icones_contact/icons8-github-48.webp') }}">GitHub
+											</a>
+										</li>
+									{% endif %}									
 									<li>
 										<a class="open-popup formulaire" href="#popupcontact-1" title="Par formulaire">
 											<img src="{{ asset('styles/img/icones_contact/icons8-courrier-48.webp') }}">Par formulaire
