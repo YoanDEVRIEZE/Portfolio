@@ -65,7 +65,7 @@
 								<li class="slider--item {% if loop.first %}slider--item-left{% elseif loop.index == 2 %}slider--item-center{% else %}slider--item-right{% endif %}">
 									<a href="#popup-{{ loop.index }}" class="open-popup" title="{{ projet_item.titre }}">
 										<div class="slider--item-image">
-											<img src="{{ asset('styles/img/icones_projets/' ~ projet_item.photocouverture) }}" tilte="{{ projet_item.alt }}" alt="{{ projet_item.alt }}">
+											<img src="{{ asset('styles/img/icones_projets/' ~ projet_item.photocouverture) }}" tilte="{{ projet_item.titre }}" alt="{{ projet_item.titre }}">
 										</div>
 										<p class="slider--item-title">{{ projet_item.titre }}</p>
 										<p class="slider--item-description">{{ projet_item.description }}</p>

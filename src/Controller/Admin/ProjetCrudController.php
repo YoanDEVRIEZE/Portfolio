@@ -3,11 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Projet;
+use App\Enum\StatutEnum;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -43,6 +45,14 @@ class ProjetCrudController extends AbstractCrudController
                 ->setMaxLength(100)
                 ->setHelp('Entre 1 et 100 caractères maximum')
                 ->setLabel('Description :'),
+            ChoiceField::new('statut')
+                ->setChoices(array_combine(
+                    array_map(fn($case) => $case->value, StatutEnum::cases()),
+                    StatutEnum::cases()
+                ))
+                ->setRequired(true)
+                ->setLabel('Statut :')
+                ->setHelp('Sélectionnez un statut pour ce projet'),
             AssociationField::new('skill')
                 ->setRequired(true)
                 ->setHelp('Sélectionnez les langages de programmation associés au projet')
@@ -61,7 +71,7 @@ class ProjetCrudController extends AbstractCrudController
                 ->setRequired($isCreatePage)
                 ->setFormTypeOptions([
                     'attr' => ['accept' => 'image/webp']
-                ]),
+                ]), 
             ImageField::new('photo')
                 ->setLabel('Photo du projet :')
                 ->setHelp('Image au format .webp')
@@ -79,12 +89,7 @@ class ProjetCrudController extends AbstractCrudController
             TextEditorField::new('contenu')
                 ->setRequired(true)
                 ->setLabel('Contenu du projet :')
-                ->setHelp('Entre 1 et 1024 caractères maximum, au format HTML'),
-            TextField::new('alt')
-                ->setLabel('Alt de l\'image :')
-                ->setMaxLength(100)
-                ->setHelp('Entre 1 et 100 caractères maximum')
-                ->setRequired(true)            
+                ->setHelp('Entre 1 et 1024 caractères maximum, au format HTML'),           
         ];
     }
 

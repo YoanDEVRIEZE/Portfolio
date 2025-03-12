@@ -25,11 +25,6 @@ class Projet
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank]
     #[Assert\Length(min: 1, max: 100)]
-    private ?string $alt = null;
-
-    #[ORM\Column(length: 100)]
-    #[Assert\NotBlank]
-    #[Assert\Length(min: 1, max: 100)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
@@ -76,18 +71,6 @@ class Projet
     public function setTitre(string $titre): static
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getAlt(): ?string
-    {
-        return $this->alt;
-    }
-
-    public function setAlt(string $alt): static
-    {
-        $this->alt = $alt;
 
         return $this;
     }

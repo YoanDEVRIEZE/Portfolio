@@ -3,10 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Parcours;
+use App\Enum\StatutEnum;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -43,11 +45,14 @@ class ParcoursCrudController extends AbstractCrudController
                 ->setMaxLength(50)
                 ->setHelp('Entre 1 et 50 caractères maximum')
                 ->setLabel('Poste occupé :'),
-            TextField::new('statut')
+            ChoiceField::new('statut')
+                ->setChoices(array_combine(
+                    array_map(fn($case) => $case->value, StatutEnum::cases()),
+                    StatutEnum::cases()
+                ))
                 ->setRequired(true)
-                ->setMaxLength(100)
-                ->setHelp('Sélectionnez un statut pour cette mission')
-                ->setLabel('Statut :'),
+                ->setLabel('Statut :')
+                ->setHelp('Sélectionnez un statut pour cette mission'),
             ImageField::new('photo_couverture')
                 ->setLabel('Photo de couverture :')
                 ->setBasePath('styles/img/icones_entreprises/')
@@ -75,7 +80,7 @@ class ParcoursCrudController extends AbstractCrudController
             DateField::new('date_fin')
                 ->setRequired(false)
                 ->setLabel('Date de fin :')
-                ->setHelp('Format : JJ/MM/AAAA'),
+                ->setHelp('Format : JJ/MM/AAAA, laissez vide si en cours ou en cours de réflexion'),
             TextEditorField::new('contenu')
                 ->setRequired(true)
                 ->setLabel('Contenu du parcours :')
