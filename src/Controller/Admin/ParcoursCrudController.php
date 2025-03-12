@@ -45,6 +45,10 @@ class ParcoursCrudController extends AbstractCrudController
                 ->setMaxLength(50)
                 ->setHelp('Entre 1 et 50 caractères maximum')
                 ->setLabel('Poste occupé :'),
+            DateField::new('date_debut')
+                ->setRequired(true)
+                ->setLabel('Date de début :')
+                ->setHelp('Format : JJ/MM/AAAA'),
             ChoiceField::new('statut')
                 ->setChoices(array_combine(
                     array_map(fn($case) => $case->value, StatutEnum::cases()),
@@ -53,6 +57,10 @@ class ParcoursCrudController extends AbstractCrudController
                 ->setRequired(true)
                 ->setLabel('Statut :')
                 ->setHelp('Sélectionnez un statut pour cette mission'),
+            DateField::new('date_fin')
+                ->setRequired(false)
+                ->setLabel('Date de fin :')
+                ->setHelp('Format : JJ/MM/AAAA, laissez vide si en cours ou en cours de réflexion'),
             ImageField::new('photo_couverture')
                 ->setLabel('Photo de couverture :')
                 ->setBasePath('styles/img/icones_entreprises/')
@@ -73,14 +81,6 @@ class ParcoursCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     'attr' => ['accept' => 'image/webp']
                 ]),
-                DateField::new('date_debut')
-                ->setRequired(true)
-                ->setLabel('Date de début :')
-                ->setHelp('Format : JJ/MM/AAAA'),
-            DateField::new('date_fin')
-                ->setRequired(false)
-                ->setLabel('Date de fin :')
-                ->setHelp('Format : JJ/MM/AAAA, laissez vide si en cours ou en cours de réflexion'),
             TextEditorField::new('contenu')
                 ->setRequired(true)
                 ->setLabel('Contenu du parcours :')
