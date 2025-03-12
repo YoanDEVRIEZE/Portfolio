@@ -28,11 +28,16 @@ class ContactCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            DateField::new('createdAt'),
-            TextField::new('nom'),
-            TextField::new('prenom'),
-            TextField::new('mail'),
-            TextEditorField::new('contenu'),
+            DateField::new('createdAt')
+                ->setLabel('Date de récepetion :'),
+            TextField::new('nom')
+                ->setLabel("Nom :"),
+            TextField::new('prenom')
+                ->setLabel('Prénom :'),
+            TextField::new('mail')
+                ->setLabel('Email :'),
+            TextEditorField::new('contenu')
+                ->setLabel('Contenu de la demande :'),
         ];
     }
 
