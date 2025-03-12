@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
+#[ORM\HasLifecycleCallbacks] 
 class Contact
 {
     #[ORM\Id]
@@ -34,6 +35,14 @@ class Contact
     #[Assert\NotBlank]
     #[Assert\Email]    
     private ?string $mail = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -86,5 +95,17 @@ class Contact
         $this->mail = $mail;
 
         return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(): void
+    {
+        if ($this->createdAt === null) {
+            $this->createdAt = new \DateTimeImmutable();
+        }
     }
 }
